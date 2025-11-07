@@ -1,0 +1,234 @@
+#include <Grove_LED_Bar.h>
+#include <Wire.h>
+#include <rgb_lcd.h>
+#include <Adafruit_NeoPixel.h>
+
+Grove_LED_Bar groveLedBar(8, 7,0);
+rgb_lcd lcd;
+Adafruit_NeoPixel pixels_3 = Adafruit_NeoPixel(250, 3, NEO_GRB + NEO_KHZ800);
+void buzzer_tune(int pin, int note ,int duration)
+{
+    if (note > 0)
+    {
+       tone(pin, note);
+       delay(duration);
+       noTone(pin);
+    }
+    else
+    {
+       noTone(pin);
+    }
+}
+
+float _E5_85_89_E7_BA_BF;
+float _E6_B9_BF_E5_BA_A6;
+float _E6_B8_A9_E5_BA_A6;
+
+void setup(){
+  Serial.begin(9600);
+
+  pinMode(A0, 0);
+  groveLedBar.begin();
+  pinMode(A2, 2);
+  pinMode(A6, 2);
+  lcd.begin(16, 2);
+  pinMode(6, OUTPUT);
+  pixels_3.setBrightness(255);
+  pixels_3.begin();
+
+  pinMode(5, OUTPUT);
+  pinMode(4, INPUT);
+}
+
+
+void definition_fun(){
+
+  _E5_85_89_E7_BA_BF = analogRead(A0);
+  if ((_E5_85_89_E7_BA_BF < 100)) {
+    groveLedBar.setLed(1,1);
+    groveLedBar.setLed(2,1);
+    groveLedBar.setLed(3,1);
+    groveLedBar.setLed(4,1);
+    groveLedBar.setLed(5,1);
+    groveLedBar.setLed(6,1);
+    groveLedBar.setLed(7,1);
+    groveLedBar.setLed(8,1);
+    groveLedBar.setLed(9,1);
+    groveLedBar.setLed(10,1);
+  }
+  if ((((_E5_85_89_E7_BA_BF >= 100)) && ((_E5_85_89_E7_BA_BF < 140)))) {
+    groveLedBar.setLed(1,1);
+    groveLedBar.setLed(2,1);
+    groveLedBar.setLed(3,1);
+    groveLedBar.setLed(4,1);
+    groveLedBar.setLed(5,1);
+    groveLedBar.setLed(6,1);
+    groveLedBar.setLed(7,1);
+    groveLedBar.setLed(8,1);
+    groveLedBar.setLed(9,0);
+    groveLedBar.setLed(10,0);
+  }
+  if ((((_E5_85_89_E7_BA_BF >= 140)) && ((_E5_85_89_E7_BA_BF < 180)))) {
+    groveLedBar.setLed(1,1);
+    groveLedBar.setLed(2,1);
+    groveLedBar.setLed(3,1);
+    groveLedBar.setLed(4,1);
+    groveLedBar.setLed(5,1);
+    groveLedBar.setLed(6,1);
+    groveLedBar.setLed(7,0);
+    groveLedBar.setLed(8,0);
+    groveLedBar.setLed(9,0);
+    groveLedBar.setLed(10,0);
+  }
+  if ((((_E5_85_89_E7_BA_BF >= 180)) && ((_E5_85_89_E7_BA_BF < 220)))) {
+    groveLedBar.setLed(1,1);
+    groveLedBar.setLed(2,1);
+    groveLedBar.setLed(3,1);
+    groveLedBar.setLed(4,1);
+    groveLedBar.setLed(5,0);
+    groveLedBar.setLed(6,0);
+    groveLedBar.setLed(7,0);
+    groveLedBar.setLed(8,0);
+    groveLedBar.setLed(9,0);
+    groveLedBar.setLed(10,0);
+  }
+  if ((((_E5_85_89_E7_BA_BF >= 220)) && ((_E5_85_89_E7_BA_BF < 260)))) {
+    groveLedBar.setLed(1,1);
+    groveLedBar.setLed(2,1);
+    groveLedBar.setLed(3,0);
+    groveLedBar.setLed(4,0);
+    groveLedBar.setLed(5,0);
+    groveLedBar.setLed(6,0);
+    groveLedBar.setLed(7,0);
+    groveLedBar.setLed(8,0);
+    groveLedBar.setLed(9,0);
+    groveLedBar.setLed(10,0);
+  }
+  if ((((_E5_85_89_E7_BA_BF >= 260)) && ((_E5_85_89_E7_BA_BF < 340)))) {
+    groveLedBar.setLed(1,1);
+    groveLedBar.setLed(2,0);
+    groveLedBar.setLed(3,0);
+    groveLedBar.setLed(4,0);
+    groveLedBar.setLed(5,0);
+    groveLedBar.setLed(6,0);
+    groveLedBar.setLed(7,0);
+    groveLedBar.setLed(8,0);
+    groveLedBar.setLed(9,0);
+    groveLedBar.setLed(10,0);
+  }
+  if ((_E5_85_89_E7_BA_BF >= 340)) {
+    groveLedBar.setLed(1,0);
+    groveLedBar.setLed(2,0);
+    groveLedBar.setLed(3,0);
+    groveLedBar.setLed(4,0);
+    groveLedBar.setLed(5,0);
+    groveLedBar.setLed(6,0);
+    groveLedBar.setLed(7,0);
+    groveLedBar.setLed(8,0);
+    groveLedBar.setLed(9,0);
+    groveLedBar.setLed(10,0);
+  }
+  delay(1000);
+
+}
+
+
+void definition_fun2(){
+
+  _E6_B9_BF_E5_BA_A6 = analogRead(A2);
+  _E6_B8_A9_E5_BA_A6 = analogRead(A6)*0.048;
+  lcd.setCursor(1-1, 1-1);
+  lcd.print("mois(%):");
+  lcd.setCursor(9-1, 1-1);
+  lcd.print(_E6_B9_BF_E5_BA_A6);
+  lcd.setCursor(1-1, 2-1);
+  lcd.print("temp(^C):");
+  lcd.setCursor(10-1, 2-1);
+  lcd.print(_E6_B8_A9_E5_BA_A6);
+  delay(1000);
+
+}
+
+
+void definition_fun3(){
+
+  if ((_E6_B9_BF_E5_BA_A6 < 15)) {
+    digitalWrite(6,HIGH);
+    delay(60000);
+    pixels_3.setPixelColor(3, pixels_3.Color(0, 255, 0));
+    pixels_3.show();
+  }
+  if ((_E6_B9_BF_E5_BA_A6 > 44)) {
+    pixels_3.setPixelColor(5, pixels_3.Color(255, 0, 0));
+    pixels_3.show();
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    analogWrite(5,0);
+  }
+  if ((((_E6_B9_BF_E5_BA_A6 >= 15)) && ((_E6_B9_BF_E5_BA_A6 <= 44)))) {
+    pixels_3.setPixelColor(5, pixels_3.Color(0, 255, 0));
+    pixels_3.show();
+  }
+
+}
+
+
+void definition_fun4(){
+
+  if ((_E6_B8_A9_E5_BA_A6 > 15)) {
+    pixels_3.setPixelColor(7, pixels_3.Color(255, 0, 0));
+    pixels_3.show();
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    analogWrite(5,0);
+  }
+  if ((_E6_B8_A9_E5_BA_A6 > 40)) {
+    pixels_3.setPixelColor(7, pixels_3.Color(255, 0, 0));
+    pixels_3.show();
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    buzzer_tune(5, 659, 500);
+    buzzer_tune(5, 523, 500);
+    analogWrite(5,0);
+  }
+  if ((((_E6_B8_A9_E5_BA_A6 >= 15)) && ((_E6_B8_A9_E5_BA_A6 <= 40)))) {
+    pixels_3.setPixelColor(7, pixels_3.Color(0, 255, 0));
+    pixels_3.show();
+  }
+
+}
+
+
+void definition_fun5(){
+
+  if (!digitalRead(4)) {
+    pixels_3.setPixelColor(1, pixels_3.Color(0, 255, 255));
+    pixels_3.show();
+  }
+  if (digitalRead(4)) {
+    pixels_3.setPixelColor(1, pixels_3.Color(0, 0, 0));
+    pixels_3.show();
+  }
+  delay(1000);
+
+}
+
+void loop(){
+
+  definition_fun2();
+  definition_fun3();
+  definition_fun();
+  definition_fun4();
+  definition_fun5();
+
+}
